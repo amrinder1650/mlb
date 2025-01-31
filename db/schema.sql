@@ -9,7 +9,7 @@ create table teams (
   team text,
   wins numeric,
   losses numeric,
-  win_pecentage numeric GENERATED ALWAYS AS (wins/(wins+losses)) STORED
+  win_pecentage numeric GENERATED ALWAYS AS (wins/(wins+losses+0.000000000000000000000000001)) STORED
 );
 
 create table schedule (
