@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import axios from 'axios';
 import Home from "./Components/Home";
 
@@ -15,6 +15,7 @@ import Home from "./Components/Home";
       <div>
         {/* <div>{message}</div> */}
         <Routes>
+          <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path='home' element={<Home />}/>
         </Routes>
       </div>
