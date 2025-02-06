@@ -3,10 +3,23 @@ import axios from 'axios';
 
 export default function Teams() {
   const [teams, setTeams] = useState(null);
+  const [newTeam, setNewTeam] = useState(null);
 
   const getTeams = () => {
     axios.get('http://localhost:8080/teams')
-    .then(res => setTeams(res.data)).catch(err => console.error(err));
+    .then(res => {setTeams(res.data)}).catch(err => console.error(err));
+  }
+
+  const updateTeam = (event) => {
+    setNewTeam(event.target.value);
+  }
+
+  const addTeam = (team) => {
+    axios.post('http://localhost:8080/teams', {
+      team: team
+    }).then(res => {
+      getTeams();
+    }).catch(err => console.error(err));
   }
 
   useEffect(() => {
@@ -42,13 +55,15 @@ export default function Teams() {
                   {team.losses}
                 </td>
                 <td>
-                  {team.win_pecentage * 100}
+                  {team.win_pecentage}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+      <input type="text" onChange={(input) => updateTeam(input)}/>
+      <button onClick={() => addTeam(newTeam)}>Add Team</button>
     </div>
   );
 }
