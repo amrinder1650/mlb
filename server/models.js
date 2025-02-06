@@ -21,6 +21,16 @@ module.exports = {
           callback(null, results);
         }
       })
+    },
+    put: function(data, callback) {
+      const query = `delete from teams where team = '${data.team}';`;
+      db.query(query, (err, results) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, results);
+        }
+      })
     }
   }
 }

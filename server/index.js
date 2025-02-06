@@ -33,6 +33,16 @@ app.post('/teams', (req, res) => {
   })
 })
 
+app.put('/teams', (req, res) => {
+  models.teams.put(req.body, (err, results) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+})
+
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Listening on port ${PORT}`);

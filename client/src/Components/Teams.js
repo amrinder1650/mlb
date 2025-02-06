@@ -22,6 +22,14 @@ export default function Teams() {
     }).catch(err => console.error(err));
   }
 
+  const removeTeam = (team) => {
+    axios.put('http://localhost:8080/teams', {
+      team: team
+    }).then(res => {
+      getTeams();
+    }).catch(err => console.error(err));
+  }
+
   useEffect(() => {
     if (!teams) {
       getTeams();
@@ -56,6 +64,9 @@ export default function Teams() {
                 </td>
                 <td>
                   {team.win_pecentage}
+                </td>
+                <td>
+                  <button onClick={() => removeTeam(team.team)}>Remove</button>
                 </td>
               </tr>
             ))}
