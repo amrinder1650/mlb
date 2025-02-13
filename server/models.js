@@ -32,5 +32,28 @@ module.exports = {
         }
       })
     }
+  },
+  schedule: {
+    get: function(callback) {
+      var query = `select * from schedule`;
+      db.query(query, (err, results) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, results.rows);
+        }
+      })
+    },
+    post: function(data, callback) {
+      const query = `insert into schedule (date, time, home, away, finished) values ('${data.date}',
+      '${data.time}', '${data.home}', '${data.away}', false);`;
+      db.query(query, (err, results) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, results);
+        }
+      })
+    }
   }
 }

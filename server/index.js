@@ -43,6 +43,27 @@ app.put('/teams', (req, res) => {
   })
 })
 
+app.get('/schedule', (req, res) => {
+  models.schedule.get((err, results) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+})
+
+app.post('/schedule', (req, res) => {
+  models.schedule.post(req.body, (err, results) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      console.log('testststeststststtsts', req.body)
+      res.status(200).send(results);
+    }
+  })
+})
+
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Listening on port ${PORT}`);
