@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import axios from 'axios';
 import Home from "./Components/Home";
 import Teams from "./Components/Teams";
+import Schedule from "./Components/Schedule";
 
   function App() {
     const [message, setMessage] = useState(null);
@@ -19,6 +20,7 @@ import Teams from "./Components/Teams";
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path='home' element={<Home />}/>
           <Route path='teams' element={<Teams />}/>
+          <Route path='schedule' element={<Schedule />}/>
         </Routes>
       </div>
     );
