@@ -33,7 +33,7 @@ export default function Schedule() {
             </tr>
           </thead>
           <tbody>
-          {/* {schedule.map((schedule) => (
+          {schedule && schedule.map((schedule) => (
               <tr key={schedule.id}>
                 <td>
                   {schedule.date}
@@ -48,7 +48,7 @@ export default function Schedule() {
                   {schedule.away}
                 </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
       )}
